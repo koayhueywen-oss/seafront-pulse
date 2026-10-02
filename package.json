@@ -1,0 +1,24 @@
+{
+  "name": "seafront-pulse",
+  "version": "1.0.0",
+  "description": "Pixel-themed Twitter sentiment dashboard for West Malaysian seafront resorts",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "scrape": "node src/scripts/scrape.js",
+    "analyze": "node src/scripts/analyze.js"
+  },
+  "dependencies": {
+    "apify-client": "^2.9.7",
+    "dotenv": "^18.0.5",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0"
+  }
+}

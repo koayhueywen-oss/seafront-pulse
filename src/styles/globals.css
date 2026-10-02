@@ -1,0 +1,425 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+:root {
+  --sand: #f4d9a6;
+  --sea: #2e7d9f;
+  --sky: #87ceeb;
+  --sunset: #ff7f50;
+  --pixel-green: #00ff00;
+  --pixel-red: #ff0000;
+  --pixel-gray: #808080;
+  --pixel-dark: #1a1a1a;
+  --pixel-border: 3px solid #1a1a1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: linear-gradient(180deg, var(--sky) 0%, var(--sea) 100%);
+  font-family: "VT323", monospace;
+  color: var(--pixel-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  padding: 20px;
+}
+
+/* Pixel borders */
+.pixel-box {
+  border: var(--pixel-border);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  background: white;
+  padding: 16px;
+}
+
+.pixel-box-sand {
+  background: var(--sand);
+}
+
+.pixel-box-dark {
+  background: var(--pixel-dark);
+  color: white;
+  border-color: var(--sand);
+}
+
+/* Main title */
+h1 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 1.2rem;
+  margin: 20px 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Sentiment bar */
+.sentiment-meter {
+  width: 100%;
+  height: 40px;
+  background: #cccccc;
+  border: var(--pixel-border);
+  margin: 20px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.sentiment-meter-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.sentiment-positive {
+  background: linear-gradient(90deg, var(--pixel-green) 0%, #00cc00 100%);
+}
+
+.sentiment-negative {
+  background: linear-gradient(90deg, var(--pixel-red) 0%, #cc0000 100%);
+}
+
+.sentiment-neutral {
+  background: linear-gradient(90deg, var(--pixel-gray) 0%, #666 100%);
+}
+
+/* Grid layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tweet card */
+.tweet-card {
+  padding: 15px;
+  margin: 12px 0;
+  background: white;
+  border: var(--pixel-border);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s;
+}
+
+.tweet-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.tweet-author {
+  font-weight: bold;
+  color: var(--sea);
+}
+
+.tweet-sentiment {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 2px solid var(--pixel-dark);
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.sentiment-pos {
+  background: var(--pixel-green);
+  color: black;
+}
+
+.sentiment-neg {
+  background: var(--pixel-red);
+  color: white;
+}
+
+.sentiment-neu {
+  background: var(--pixel-gray);
+  color: white;
+}
+
+.tweet-text {
+  margin: 10px 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.tweet-images {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.tweet-image {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--pixel-dark);
+  max-height: 200px;
+}
+
+.tweet-stats {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  border-top: 2px dashed #ccc;
+  padding-top: 10px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat-icon {
+  font-size: 1.2rem;
+}
+
+/* Keyword cloud */
+.keyword-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.keyword {
+  padding: 8px 12px;
+  border: var(--pixel-border);
+  background: var(--sand);
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s;
+  white-space: nowrap;
+}
+
+.keyword:hover {
+  transform: scale(1.1);
+  background: var(--sunset);
+  color: white;
+}
+
+.keyword-size-1 {
+  font-size: 0.9rem;
+}
+
+.keyword-size-2 {
+  font-size: 1.1rem;
+}
+
+.keyword-size-3 {
+  font-size: 1.3rem;
+}
+
+.keyword-size-4 {
+  font-size: 1.5rem;
+}
+
+.keyword-size-5 {
+  font-size: 1.8rem;
+}
+
+.keyword-positive {
+  border-color: var(--pixel-green);
+  color: var(--pixel-green);
+}
+
+.keyword-negative {
+  border-color: var(--pixel-red);
+  color: var(--pixel-red);
+}
+
+/* Resort stats */
+.resort-card {
+  padding: 15px;
+  border: var(--pixel-border);
+  background: var(--sand);
+  text-align: center;
+}
+
+.resort-name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.resort-score {
+  font-family: "Press Start 2P", monospace;
+  font-size: 1.5rem;
+  color: var(--sea);
+  margin: 10px 0;
+}
+
+.resort-sentiment-bar {
+  width: 100%;
+  height: 20px;
+  background: #ddd;
+  border: 2px solid var(--pixel-dark);
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.resort-sentiment-bar-fill {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.sentiment-stat {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  border-top: 2px solid var(--pixel-dark);
+  padding-top: 8px;
+}
+
+.sentiment-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sentiment-stat-num {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Button */
+.pixel-btn {
+  padding: 10px 20px;
+  border: var(--pixel-border);
+  background: var(--sunset);
+  color: white;
+  font-family: "VT323", monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.1s;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pixel-btn:hover {
+  background: #ff6340;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+.pixel-btn:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 3px solid var(--pixel-dark);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 10px 15px;
+  border: var(--pixel-border);
+  background: #ddd;
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  font-weight: bold;
+  transition: all 0.1s;
+  border-bottom: none;
+}
+
+.tab.active {
+  background: var(--sea);
+  color: white;
+}
+
+.tab:hover {
+  background: var(--sky);
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-family: "Press Start 2P", monospace;
+}
+
+.loading-spinner {
+  display: inline-block;
+  border: 3px solid var(--pixel-dark);
+  border-top: 3px solid var(--sunset);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  border: var(--pixel-border);
+  background: var(--sand);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
